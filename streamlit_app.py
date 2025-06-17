@@ -3,6 +3,46 @@ import streamlit as st
 # ✅ 这一行必须放最上面
 st.set_page_config(page_title="CheckCheckCheck", layout="wide")
 
+import streamlit as st
+
+# 这段 CSS 会美化按钮、输入框、整体背景，简单好看
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f0f2f5;
+        color: #222;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .stButton>button {
+        background-color: #007bff;
+        color: white;
+        border-radius: 8px;
+        padding: 8px 24px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+    .stButton>button:hover {
+        background-color: #0056b3;
+    }
+    .stTextInput>div>div>input {
+        border: 1.5px solid #007bff;
+        border-radius: 6px;
+        padding: 6px 10px;
+    }
+    .css-1d391kg {
+        max-width: 600px;
+        margin: auto;
+        padding: 24px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # --- 初始化用户字典 ---
 if 'users' not in st.session_state:
     st.session_state['users'] = {"admin": "1008611"}
