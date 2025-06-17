@@ -5,7 +5,7 @@ st.set_page_config(page_title="CheckCheckCheck", layout="wide")
 
 # --- 初始化用户字典 ---
 if 'users' not in st.session_state:
-    st.session_state['users'] = {"admin": "123456"}
+    st.session_state['users'] = {"admin": "1008611"}
 
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
