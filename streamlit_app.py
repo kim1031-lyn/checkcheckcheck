@@ -1,9 +1,9 @@
 import streamlit as st
 
-# ✅ 必须是第一个 Streamlit 命令
+# ✅ 这一行必须放最上面
 st.set_page_config(page_title="CheckCheckCheck", layout="wide")
 
-# 初始化状态
+# --- 初始化用户字典 ---
 if 'users' not in st.session_state:
     st.session_state['users'] = {"admin": "123456"}
 
@@ -18,7 +18,7 @@ def login():
         if username in st.session_state['users'] and st.session_state['users'][username] == password:
             st.session_state['logged_in'] = True
             st.success(f"欢迎 {username}！")
-            st.experimental_rerun()
+            st.rerun()  # ✅ 使用新版本的 rerun 方法
         else:
             st.error("用户名或密码错误")
 
@@ -35,7 +35,7 @@ def add_user():
             st.session_state['users'][new_user] = new_pass
             st.success(f"添加用户 {new_user} 成功！")
 
-# 登录逻辑
+# --- 登录逻辑与页面显示 ---
 if not st.session_state['logged_in']:
     login()
 else:
@@ -44,15 +44,16 @@ else:
 
     if option == "主页":
         st.title("🔗 CheckCheckCheck")
-
-        # ✅ 读取 HTML 放到登录后，且 set_page_config 后执行
-        with open("index.html", "r", encoding="utf-8") as f:
-            html_content = f.read()
-        st.components.v1.html(html_content, height=800, scrolling=True)
+        try:
+            with open("index.html", "r", encoding="utf-8") as f:
+                html_content = f.read()
+            st.components.v1.html(html_content, height=800, scrolling=True)
+        except FileNotFoundError:
+            st.error("找不到 index.html 文件，请确保文件存在于项目目录中。")
 
     elif option == "添加用户":
         add_user()
 
     elif option == "退出登录":
         st.session_state['logged_in'] = False
-        st.experimental_rerun()
+        st.rerun()  # ✅ 替代 experimental_rerun()
