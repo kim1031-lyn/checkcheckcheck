@@ -83,7 +83,7 @@ else:
     option = st.sidebar.selectbox("选择操作", ["主页", "添加用户", "退出登录"])
 
     if option == "主页":
-        st.title("🔗 CheckCheckCheck")
+        st.title("🔗 Backlink Checker")
         try:
             with open("index.html", "r", encoding="utf-8") as f:
                 html_content = f.read()
