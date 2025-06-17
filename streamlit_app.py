@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="CheckCheckCheck", layout="wide")
+
 # --- 初始化用户字典 ---
 if 'users' not in st.session_state:
     st.session_state['users'] = {"admin": "123456"}
@@ -42,7 +44,6 @@ else:
         with open("index.html", "r", encoding="utf-8") as f:
             html_content = f.read()
 
-        st.set_page_config(page_title="CheckCheckCheck", layout="wide")
         st.title("🔗 CheckCheckCheck")
         st.components.v1.html(html_content, height=800, scrolling=True)
 
