@@ -498,6 +498,33 @@
     }
   </style>
   <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+<style>
+    .styled-table {
+      width: 98%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }
+    .styled-table th, .styled-table td {
+      border: 1px solid #ccc;
+      padding: 12px 15px;
+      word-break: break-all;
+      word-wrap: break-word;
+    }
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #fff;
+      text-align: left;
+    }
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+    .styled-table tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
 </head>
 <body>
 <div class="dark-toggle" onclick="toggleDark()">🌙 切换主题</div>
