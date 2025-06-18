@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>CheckCheckCheck</title>
+  <style>
+:root {
+  /* 主色调 - 高级蓝紫渐变色系 */
+  --primary-color: #4a6cf7;
+  --primary-light: #6e8aff;
+  --primary-dark: #3a56d4;
+  --primary-gradient: linear-gradient(135deg, #4a6cf7 0%, #6e8aff 100%);
+  --secondary-color: #5e60ce;
+  --accent-color: #7400b8;
+  --success-color: #0cce6b;
+  --success-light: rgba(12, 206, 107, 0.1);
+  --warning-color: #ffbe0b;
+  --warning-light: rgba(255, 190, 11, 0.1);
+  --error-color: #ff5470;
+  --error-light: rgba(255, 84, 112, 0.1);
+  --info-color: #3abff8;
+  --info-light: rgba(58, 191, 248, 0.1);
+  --bg-color: #ffffff;
+  --bg-secondary: #f8faff;
+  --bg-tertiary: #eef2ff;
+  --card-bg: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --text-light: #f8fafc;
+  --border-color: #e2e8f0;
+  --border-light: #f1f5f9;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px var(--shadow-color);
+  --shadow-md: 0 4px 12px var(--shadow-color);
+  --shadow-lg: 0 10px 25px var(--shadow-color);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --table-header-bg: #f8faff;
+  --table-row-hover: #eef2ff;
+}
+
+    :root {
+      /* 主色调 - 高级蓝紫渐变色系 */
+      --primary-color: #4a6cf7;
+      --primary-light: #6e8aff;
+      --primary-dark: #3a56d4;
+      --primary-gradient: linear-gradient(135deg, #4a6cf7 0%, #6e8aff 100%);
+      --secondary-color: #5e60ce;
+      --accent-color: #7400b8;
+      --success-color: #0cce6b;
+      --success-light: rgba(12, 206, 107, 0.1);
+      --warning-color: #ffbe0b;
+      --warning-light: rgba(255, 190, 11, 0.1);
+      --error-color: #ff5470;
+      --error-light: rgba(255, 84, 112, 0.1);
+      --info-color: #3abff8;
+      --info-light: rgba(58, 191, 248, 0.1);
+      --bg-color: #ffffff;
+      --bg-secondary: #f8faff;
+      --bg-tertiary: #eef2ff;
+      --card-bg: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-tertiary: #94a3b8;
+      --text-light: #f8fafc;
+      --border-color: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-color: rgba(0, 0, 0, 0.05);
+      --shadow-sm: 0 2px 4px var(--shadow-color);
+      --shadow-md: 0 4px 12px var(--shadow-color);
+      --shadow-lg: 0 10px 25px var(--shadow-color);
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --table-header-bg: #f8faff;
+      --table-row-hover: #eef2ff;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #ddd;
+      --card-bg: #1e1e1e;
+      --primary-color: #4dabf7;
+      --table-header-bg: #1f2b3a;
+      --shadow-color: rgba(0,0,0,0.4);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
+      padding: 0;
+      margin: 0;
+      color: var(--text-primary);
+      transition: all var(--transition-normal);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 40px 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 3.2em;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      margin-top: 10px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .input-section {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .input-section h2 {
+      font-size: 1.8em;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 20px;
+      margin: 0 0 24px;
+      font-size: 16px;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--border-light);
+      box-sizing: border-box;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+      resize: vertical;
+      min-height: 120px;
+      font-family: var(--font-sans);
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+    }
+
+    input[type="file"], select {
+      width: 100%;
+      padding: 16px;
+      margin: 0 0 20px;
+      font-size: 16px;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--border-light);
+      box-sizing: border-box;
+      background: white;
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+    }
+
+    input[type="file"]:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      padding: 16px 32px;
+      border-radius: var(--radius-lg);
+      font-size: 16px;
+      box-shadow: 0 4px 16px rgba(74, 108, 247, 0.3);
+      transition: all var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(74, 108, 247, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary-color);
+      font-weight: 600;
+      border: 2px solid var(--primary-color);
+      cursor: pointer;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .result-area {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--border-light);
+      max-height: 600px;
+      overflow-y: auto;
+      transition: all var(--transition-fast);
+    }
+
+    .result-area:empty {
+      display: none;
+    }
+
+    .selectors {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    select {
+      flex-grow: 1;
+      max-width: 48%;
+    }
+
+    select option.invalid {
+      color: red !important;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 16px;
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      word-break: break-word;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    th {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    th:first-child {
+      border-top-left-radius: var(--radius-lg);
+    }
+
+    th:last-child {
+      border-top-right-radius: var(--radius-lg);
+    }
+
+    tbody tr {
+      transition: all var(--transition-fast);
+    }
+
+    tbody tr:hover {
+      background-color: var(--bg-secondary);
+      transform: scale(1.01);
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(248, 250, 255, 0.5);
+    }
+
+    tbody tr:last-child td:first-child {
+      border-bottom-left-radius: var(--radius-lg);
+    }
+
+    tbody tr:last-child td:last-child {
+      border-bottom-right-radius: var(--radius-lg);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .loading {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .error {
+      color: var(--error-color);
+      margin-top: 5px;
+    }
+
+    .stats {
+      color: var(--text-secondary);
+      margin: 10px 0;
+    }
+
+    .dofollow-text {
+      color: var(--success-color);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .nofollow-text {
+      color: var(--warning-color);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .pagination {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .pagination {
+      margin-top: 24px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      background: white;
+      border: 2px solid var(--border-light);
+      color: var(--text-primary);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all var(--transition-fast);
+      min-width: 44px;
+    }
+
+    .pagination button:hover:not(:disabled) {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+    }
+
+    .pagination button:disabled {
+      background: var(--bg-tertiary);
+      color: var(--text-tertiary);
+      cursor: not-allowed;
+      border-color: var(--border-light);
+    }
+
+    .pagination button.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .copy-btn {
+      margin-left: 8px;
+      padding: 6px 12px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+      font-weight: 500;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      transform: scale(1.05);
+    }
+
+    .invalid-domain {
+      color: var(--error-color);
+      font-weight: bold;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      overflow: hidden;
+      transition: all var(--transition-fast);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+    }
+
+    .feature-header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 24px 32px;
+      font-size: 1.4em;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-content {
+      padding: 32px;
+    }
+
+    .collapsible {
+      margin-bottom: 0;
+    }
+
+    .toggle-btn {
+      display: none;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: rgba(255,255,255,0.9);
+      color: var(--primary-color);
+      padding: 12px 16px;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      z-index: 1000;
+      transition: all var(--transition-fast);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      font-weight: 500;
+    }
+
+    .dark-toggle:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: scale(1.05);
+    }
+  </style>
+  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+</head>
+<body>
+<div class="dark-toggle" onclick="toggleDark()">🌙 切换主题</div>
+
+<div class="container">
+  <div class="header">
+    <h1>锚文本检查工具</h1>
+    <div class="subtitle">专业的网页链接分析与Word文档处理平台</div>
+  </div>
+
+  <div class="input-section">
+    <h2>🌐 批量网页链接分析</h2>
+    <textarea id="urlInput" rows="5" placeholder="请输入要分析的网页链接，每行一个：\nhttps://example.com/page1\nhttps://example.com/page2\nhttps://example.com/page3"></textarea>
+    <button class="btn-primary" onclick="startExtraction()">开始分析链接</button>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-header">
+        📄 Word 文档处理
+      </div>
+      <div class="feature-content">
+        <div class="collapsible">
+          <div id="docxBlock">
+            <input type="file" id="docxInput" accept=".docx" placeholder="选择Word文档" />
+            <button class="btn-primary" onclick="handleDocx()">上传并提取链接</button>
+            <div id="docxResult" class="result-area"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-header">
+        🔍 链接分析结果
+      </div>
+      <div class="feature-content">
+        <div class="collapsible">
+          <div id="webBlock">
+            <div class="selectors" style="display:none;">
+              <select id="sourceSelect" onchange="onSourceChange()"><option value="">选择来源页面</option></select>
+              <select id="domainSelect" onchange="onDomainChange()" disabled><option value="">选择目标域名</option></select>
+            </div>
+            <div id="stats" class="stats"></div>
+            <div id="resultArea" class="result-area"></div>
+            <div id="pagination" class="pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let allData = {}, inputOrder = [], filteredSource = '', filteredDomain = '', currentPage = 1, currentRows = [], pageSize = 50;
+
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+  }
+
+  function toggleSection(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function getDomainFromURL(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ''); }
+    catch { return ''; }
+  }
+
+  async function fetchWithFallback(url) {
+    const proxies = [u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`, u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`];
+    for (let proxy of proxies) {
+      try {
+        const res = await fetch(proxy(url));
+        if (!res.ok) throw new Error(`状态 ${res.status}`);
+        return await res.text();
+      } catch {}
+    }
+    throw new Error('所有代理失败');
+  }
+
+async function fetchAndExtract(url) {
+  const html = await fetchWithFallback(url);
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+
+  const results = [];
+
+  // 尝试策略1：从常见内容区域提取
+  const selectors = ['main', 'article', '#content', '.post-content'];
+  let container = selectors.map(s => doc.querySelector(s)).find(c => c);
+
+  let anchors = [];
+  if (container) {
+    anchors = container.querySelectorAll('a[href]');
+  }
+
+  // 策略2 fallback：若未提取到任何链接，则从 body 全量扫描
+  if (!anchors || anchors.length === 0) {
+    container = doc.body;
+    anchors = container.querySelectorAll('a[href]');
+  }
+
+  anchors.forEach(a => {
+    const text = a.textContent.trim();
+    const hrefRaw = a.getAttribute('href')?.trim();
+    if (!hrefRaw || !text) return;
+
+    let href;
+    try {
+      href = new URL(hrefRaw, url).href;
+    } catch {
+      href = hrefRaw;
+    }
+
+    const targetDomain = getDomainFromURL(href);
+    const rel = a.getAttribute('rel') || '';
+    const followType = rel.toLowerCase().includes('nofollow') ? 'nofollow' : 'dofollow';
+
+    if (targetDomain) {
+      results.push({ text, href, targetDomain, followType });
+    }
+  });
+
+  return results;
+}
+
+
+  async function startExtraction() {
+    const input = document.getElementById('urlInput').value.trim();
+    const rawUrls = input.split('\n').map(u => u.trim()).filter(Boolean);
+    const urls = [], seen = new Set();
+    rawUrls.forEach(u => {
+      try {
+        const url = new URL(u).href;
+        if (!seen.has(url)) {
+          seen.add(url);
+          urls.push(url);
+        }
+      } catch {}
+    });
+    inputOrder = [...urls];
+    if (!urls.length) return alert('请输入至少一个有效网址');
+
+    allData = {}; filteredSource = filteredDomain = ''; currentPage = 1;
+    document.getElementById('resultArea').innerHTML = '<p class="loading">抓取中，请稍候...</p>';
+    document.querySelector('.selectors').style.display = 'none';
+    document.getElementById('pagination').innerHTML = '';
+    document.getElementById('stats').textContent = '';
+
+    for (const url of urls) {
+      try {
+        const anchors = await fetchAndExtract(url);
+        allData[url] = anchors;
+      } catch (e) {
+        const errP = document.createElement('p');
+        errP.className = 'error';
+        errP.textContent = `抓取失败：${url}（${e.message}）`;
+        document.getElementById('resultArea').appendChild(errP);
+      }
+    }
+
+    const orderedDomainSet = new Set();
+    urls.forEach(u => {
+      (allData[u] || []).forEach(a => {
+        orderedDomainSet.add(a.targetDomain);
+      });
+    });
+
+    const actualDomains = new Set();
+    Object.values(allData).flat().forEach(a => actualDomains.add(a.targetDomain));
+
+    const sourceSelect = document.getElementById('sourceSelect');
+    sourceSelect.innerHTML = `<option value="">选择来源页面</option>${urls.map(u => `<option value="${u}">${u}</option>`).join('')}`;
+
+    const domainSelect = document.getElementById('domainSelect');
+    domainSelect.innerHTML = `<option value="">选择目标域名</option>`;
+    orderedDomainSet.forEach(domain => {
+      const isValid = inputOrder.some(src => getDomainFromURL(src) === domain);
+      const classStr = isValid ? '' : 'class="invalid"';
+      domainSelect.innerHTML += `<option ${classStr} value="${domain}">${domain}</option>`;
+    });
+    domainSelect.disabled = false;
+
+    document.querySelector('.selectors').style.display = 'flex';
+    displayResults();
+  }
+
+  function onSourceChange() {
+    filteredSource = document.getElementById('sourceSelect').value;
+    filteredDomain = '';
+    document.getElementById('domainSelect').value = '';
+    currentPage = 1;
+    displayResults();
+  }
+
+  function onDomainChange() {
+    filteredDomain = document.getElementById('domainSelect').value;
+    currentPage = 1;
+    displayResults();
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).catch(() => alert("复制失败"));
+  }
+
+  function displayResults() {
+    const resultArea = document.getElementById('resultArea');
+    resultArea.innerHTML = '';
+    let rows = [];
+
+    const sources = filteredSource ? [filteredSource] : Object.keys(allData);
+    sources.forEach(source => {
+      (allData[source] || []).forEach(a => {
+        if (!filteredDomain || a.targetDomain === filteredDomain)
+          rows.push({ source, ...a });
+      });
+    });
+
+    if (!rows.length) {
+      resultArea.innerHTML = '<p>无匹配的锚文本。</p>';
+      document.getElementById('stats').textContent = '';
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+
+    currentRows = rows;
+    document.getElementById('stats').textContent = `显示锚文本总数：${rows.length}`;
+    showPage(currentPage);
+  }
+
+  function showPage(page) {
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    const rows = currentRows.slice(start, end);
+
+    const table = document.createElement('table');
+    table.innerHTML = `<thead><tr><th>来源页面</th><th>锚文本</th><th>目标链接</th><th>目标域名</th><th>链接类型</th></tr></thead>`;
+    const tbody = document.createElement('tbody');
+
+    rows.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${row.source}</td>
+        <td>${row.text}<button class="copy-btn" onclick="copyToClipboard('${row.text}')">复制</button></td>
+        <td><a href="${row.href}" target="_blank">${row.href}</a><button class="copy-btn" onclick="copyToClipboard('${row.href}')">复制</button></td>
+        <td>${row.targetDomain}</td>
+        <td class="${row.followType === 'nofollow' ? 'nofollow-text' : 'dofollow-text'}">${row.followType}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    const resultArea = document.getElementById('resultArea');
+    resultArea.innerHTML = '';
+    resultArea.appendChild(table);
+
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+    const totalPages = Math.ceil(currentRows.length / pageSize);
+    if (totalPages <= 1) return;
+
+    const prev = document.createElement('button');
+    prev.textContent = '上一页';
+    prev.disabled = page === 1;
+    prev.onclick = () => { currentPage--; showPage(currentPage); };
+    pagination.appendChild(prev);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.disabled = i === page;
+      btn.onclick = () => { currentPage = i; showPage(i); };
+      pagination.appendChild(btn);
+    }
+
+    const next = document.createElement('button');
+    next.textContent = '下一页';
+    next.disabled = page === totalPages;
+    next.onclick = () => { currentPage++; showPage(currentPage); };
+    pagination.appendChild(next);
+  }
+
+  function handleDocx() {
+    const input = document.getElementById('docxInput');
+    const resultDiv = document.getElementById('docxResult');
+    resultDiv.innerHTML = '<p class="loading">正在解析 Word 文档...</p>';
+
+    if (!input.files.length) return alert('请先选择 Word 文件');
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      mammoth.convertToHtml({ arrayBuffer: event.target.result }).then(result => {
+        const html = result.value;
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const links = doc.querySelectorAll('a[href]');
+        if (!links.length) {
+          resultDiv.innerHTML = '<p>未提取到任何链接。</p>';
+          return;
+        }
+
+        let table = `<table><thead><tr><th>锚文本</th><th>链接地址</th></tr></thead><tbody>`;
+        links.forEach(a => {
+          const text = a.textContent.trim();
+          const href = a.getAttribute('href').trim();
+          if (text && href) {
+            table += `<tr><td>${text}</td><td><a href="${href}" target="_blank">${href}</a></td></tr>`;
+          }
+        });
+        table += '</tbody></table>';
+        resultDiv.innerHTML = table;
+      }).catch(err => {
+        resultDiv.innerHTML = `<p class="error">解析失败：${err.message}</p>`;
+      });
+    };
+    reader.readAsArrayBuffer(input.files[0]);
+  }
+</script>
+</body>
+</html>
