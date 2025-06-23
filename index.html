@@ -89,14 +89,24 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 12px;
+      table-layout: fixed; /* 新增：使用固定表格布局算法 */
     }
 
     th, td {
       padding: 10px 8px;
       border-bottom: 1px solid #ccc;
       text-align: left;
-      word-break: break-word;
+      word-break: break-all; /* 修改：允许在任意字符间换行，对URL友好 */
     }
+    
+    /* === 新增样式：用于控制列宽 === */
+    .col-source { width: 26%; }
+    .col-date { width: 12%; }
+    .col-anchor { width: 18%; }
+    .col-target-link { width: 26%; }
+    .col-domain { width: 10%; }
+    .col-type { width: 8%; text-align: center; }
+    /* === 结束新增 === */
 
     th {
       background-color: var(--table-header-bg);
@@ -272,7 +282,6 @@
   }
 
   function extractPublishDate(doc) {
-    // 尝试从 meta 标签获取
     const metaSelectors = [
         'meta[property="article:published_time"]',
         'meta[property="og:published_time"]',
@@ -287,13 +296,11 @@
         if (el && el.content) return el.content.split('T')[0];
     }
 
-    // 尝试从 time 标签获取
     const timeEl = doc.querySelector('time[datetime]');
     if (timeEl && timeEl.getAttribute('datetime')) {
         return timeEl.getAttribute('datetime').split('T')[0];
     }
     
-    // 尝试从 JSON-LD 获取
     try {
         const jsonLd = doc.querySelector('script[type="application/ld+json"]');
         if (jsonLd) {
@@ -312,8 +319,6 @@ async function fetchAndExtract(url) {
   const publishDate = extractPublishDate(doc);
 
   const results = [];
-
-  // 尝试策略1：从常见内容区域提取
   const selectors = ['main', 'article', '#content', '.post-content'];
   let container = selectors.map(s => doc.querySelector(s)).find(c => c);
 
@@ -322,7 +327,6 @@ async function fetchAndExtract(url) {
     anchors = container.querySelectorAll('a[href]');
   }
 
-  // 策略2 fallback：若未提取到任何链接，则从 body 全量扫描
   if (!anchors || anchors.length === 0) {
     container = doc.body;
     anchors = container.querySelectorAll('a[href]');
@@ -468,18 +472,30 @@ async function fetchAndExtract(url) {
     const rows = currentRows.slice(start, end);
 
     const table = document.createElement('table');
-    table.innerHTML = `<thead><tr><th>来源页面</th><th>文章上线时间</th><th>锚文本</th><th>目标链接</th><th>目标域名</th><th>链接类型</th></tr></thead>`;
+    // 修改：为每个表头（th）添加class，用于CSS控制
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th class="col-source">来源页面</th>
+          <th class="col-date">文章上线时间</th>
+          <th class="col-anchor">锚文本</th>
+          <th class="col-target-link">目标链接</th>
+          <th class="col-domain">目标域名</th>
+          <th class="col-type">链接类型</th>
+        </tr>
+      </thead>`;
     const tbody = document.createElement('tbody');
 
     rows.forEach(row => {
       const tr = document.createElement('tr');
+      // 修改：为每个单元格（td）添加class，与表头对应
       tr.innerHTML = `
-        <td>${row.source}</td>
-        <td>${row.publishDate}</td>
-        <td>${row.text}<button class="copy-btn" onclick="copyToClipboard('${row.text.replace(/'/g, "\\'")}')">复制</button></td>
-        <td><a href="${row.href}" target="_blank">${row.href}</a><button class="copy-btn" onclick="copyToClipboard('${row.href.replace(/'/g, "\\'")}')">复制</button></td>
-        <td>${row.targetDomain}</td>
-        <td class="${row.followType === 'nofollow' ? 'nofollow-text' : 'dofollow-text'}">${row.followType}</td>
+        <td class="col-source">${row.source}</td>
+        <td class="col-date">${row.publishDate}</td>
+        <td class="col-anchor">${row.text}<button class="copy-btn" onclick="copyToClipboard('${row.text.replace(/'/g, "\\'")}')">复制</button></td>
+        <td class="col-target-link"><a href="${row.href}" target="_blank">${row.href}</a><button class="copy-btn" onclick="copyToClipboard('${row.href.replace(/'/g, "\\'")}')">复制</button></td>
+        <td class="col-domain">${row.targetDomain}</td>
+        <td class="col-type ${row.followType === 'nofollow' ? 'nofollow-text' : 'dofollow-text'}">${row.followType}</td>
       `;
       tbody.appendChild(tr);
     });
