@@ -3,49 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <title>CheckCheckCheck</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-:root {
-  /* 主色调 - 高级蓝紫渐变色系 */
-  --primary-color: #4a6cf7;
-  --primary-light: #6e8aff;
-  --primary-dark: #3a56d4;
-  --primary-gradient: linear-gradient(135deg, #4a6cf7 0%, #6e8aff 100%);
-  --secondary-color: #5e60ce;
-  --accent-color: #7400b8;
-  --success-color: #0cce6b;
-  --success-light: rgba(12, 206, 107, 0.1);
-  --warning-color: #ffbe0b;
-  --warning-light: rgba(255, 190, 11, 0.1);
-  --error-color: #ff5470;
-  --error-light: rgba(255, 84, 112, 0.1);
-  --info-color: #3abff8;
-  --info-light: rgba(58, 191, 248, 0.1);
-  --bg-color: #ffffff;
-  --bg-secondary: #f8faff;
-  --bg-tertiary: #eef2ff;
-  --card-bg: #ffffff;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-tertiary: #94a3b8;
-  --text-light: #f8fafc;
-  --border-color: #e2e8f0;
-  --border-light: #f1f5f9;
-  --shadow-color: rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 2px 4px var(--shadow-color);
-  --shadow-md: 0 4px 12px var(--shadow-color);
-  --shadow-lg: 0 10px 25px var(--shadow-color);
-  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --table-header-bg: #f8faff;
-  --table-row-hover: #eef2ff;
-}
+    :root {
+      --bg-color: #f0f2f5;
+      --text-color: #333;
+      --card-bg: #fff;
+      --primary-color: #007bff;
+      --table-header-bg: #f5f8ff;
+      --shadow-color: rgba(0,0,0,0.08);
+    }
 
     body.dark {
       --bg-color: #121212;
@@ -57,385 +23,116 @@
     }
 
     body {
-      font-family: var(--font-sans);
-      background: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
-      padding: 0;
-      margin: 0;
-      color: var(--text-primary);
-      transition: all var(--transition-normal);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1800px; /* 维持上次增加的页面最大宽度 */
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 60px;
-      padding: 40px 0;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg);
-      margin-bottom: 40px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-color);
+      padding: 30px;
+      max-width: 1400px;
+      margin: auto;
+      color: var(--text-color);
+      transition: all 0.3s ease;
     }
 
     h1 {
-      font-size: 3.2em;
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: -1px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+      color: var(--text-color);
     }
 
-    .subtitle {
-      font-size: 1.2em;
-      margin-top: 10px;
-      opacity: 0.9;
-      font-weight: 300;
-    }
-
-    .input-section {
-      background: white;
-      border-radius: var(--radius-xl);
-      padding: 40px;
-      margin-bottom: 40px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .input-section h2 {
-      font-size: 1.8em;
-      margin-bottom: 24px;
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-
-    textarea {
+    button, input[type="file"], select, textarea {
       width: 100%;
-      padding: 20px;
-      margin: 0 0 24px;
-      font-size: 16px;
-      border-radius: var(--radius-lg);
-      border: 2px solid var(--border-light);
-      box-sizing: border-box;
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      transition: all var(--transition-fast);
-      resize: vertical;
-      min-height: 120px;
-      font-family: var(--font-sans);
-    }
-
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
-    }
-
-    input[type="file"], select {
-      width: 100%;
-      padding: 16px;
-      margin: 0 0 20px;
-      font-size: 16px;
-      border-radius: var(--radius-lg);
-      border: 2px solid var(--border-light);
+      padding: 10px;
+      margin: 10px 0 15px;
+      font-size: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
       box-sizing: border-box;
       background: white;
-      color: var(--text-primary);
-      transition: all var(--transition-fast);
+      color: black;
     }
 
-    input[type="file"]:focus, select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    button {
+      background-color: var(--primary-color);
       color: white;
       font-weight: 600;
       border: none;
       cursor: pointer;
-      padding: 16px 32px;
-      border-radius: var(--radius-lg);
-      font-size: 16px;
-      box-shadow: 0 4px 16px rgba(74, 108, 247, 0.3);
-      transition: all var(--transition-fast);
-      position: relative;
-      overflow: hidden;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(74, 108, 247, 0.4);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: var(--primary-color);
-      font-weight: 600;
-      border: 2px solid var(--primary-color);
-      cursor: pointer;
-      padding: 12px 24px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      transition: all var(--transition-fast);
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary-color);
-      color: white;
+    button:hover {
+      background-color: #0056b3;
     }
 
     .result-area {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 0; /* 移除 result-area 的内边距，让表格完全填充 */
-      border: 1px solid var(--border-light);
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px var(--shadow-color);
       max-height: 600px;
-      overflow-y: auto; /* 允许垂直滚动 */
-      transition: all var(--transition-normal); /* 调整过渡时间 */
+      overflow-y: auto;
     }
 
-    .result-area:empty {
-      display: none;
-    }
-
-    /* 筛选器样式 */
     .selectors {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      padding: 16px; /* 为筛选器增加内边距，使其与表格内容区分 */
-      background: var(--bg-color); /* 筛选器背景色 */
-      border-bottom: 1px solid var(--border-light);
-      border-top-left-radius: var(--radius-lg); /* 顶部圆角 */
-      border-top-right-radius: var(--radius-lg);
     }
 
     select {
       flex-grow: 1;
       max-width: 48%;
     }
-    
-    /* 调整选择器的样式，使其更协调 */
-    .selectors select {
-        padding: 12px;
-        border-radius: var(--radius-md);
-        border: 1px solid var(--border-color);
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-    }
-    .selectors select:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
-    }
-
 
     select option.invalid {
       color: red !important;
     }
 
-    /* 表格样式优化 */
     table {
-      width: 100%; /* 表格宽度占满可用空间 */
-      table-layout: fixed; /* 关键：固定表格布局，精确控制列宽 */
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 0; /* 移除顶部间距，紧跟筛选器 */
-      background: white;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
     }
 
     th, td {
-      padding: 12px 16px; /* 单元格内边距 */
+      padding: 10px 8px;
+      border-bottom: 1px solid #ccc;
       text-align: left;
-      /* 允许文本在必要时自动换行 */
-      white-space: normal;
-      overflow-wrap: break-word; /* 允许在单词内部换行，防止超长单词溢出 */
-      word-break: break-word; /* 兼容性回退 */
-      border-bottom: 1px solid var(--border-light);
-      vertical-align: top; /* 确保内容顶部对齐 */
+      word-break: break-word;
     }
 
-    /* 列宽分配：使用百分比和最小宽度确保在不同屏幕尺寸下的合理布局 */
-    th:nth-child(1), td:nth-child(1) { width: 25%; min-width: 200px; } /* 来源页面 */
-    th:nth-child(2), td:nth-child(2) { width: 20%; min-width: 180px; } /* 锚文本 */
-    th:nth-child(3), td:nth-child(3) { width: 35%; min-width: 280px; } /* 目标链接，给最多空间 */
-    th:nth-child(4), td:nth-child(4) { width: 15%; min-width: 150px; } /* 目标域名 */
-    th:nth-child(5), td:nth-child(5) { width: 5%; min-width: 80px; } /* 链接类型 */
-
-
     th {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      font-weight: 600;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      background-color: var(--table-header-bg);
       position: sticky;
       top: 0;
       z-index: 2;
+      color: var(--primary-color);
     }
 
-    th:first-child {
-      border-top-left-radius: var(--radius-lg);
-    }
-
-    th:last-child {
-      border-top-right-radius: var(--radius-lg);
-    }
-
-    tbody tr {
-      transition: all var(--transition-fast);
-    }
-
-    tbody tr:hover {
-      background-color: var(--bg-secondary);
-      transform: scale(1.01);
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: rgba(248, 250, 255, 0.5);
-    }
-
-    tbody tr:last-child td:first-child {
-      border-bottom-left-radius: var(--radius-lg);
-    }
-
-    tbody tr:last-child td:last-child {
-      border-bottom-right-radius: var(--radius-lg);
-    }
-
-    tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* 包裹文本和复制按钮的容器 */
-    .cell-content-wrapper {
-        display: flex; /* 使用 Flexbox 布局 */
-        align-items: flex-start; /* 内容顶部对齐 */
-        gap: 8px; /* 文本和按钮之间的间距 */
-        width: 100%; /* 确保 wrapper 占据单元格所有宽度 */
-        flex-wrap: wrap; /* 允许内容换行 */
-    }
-
-    /* 文本和链接将允许换行，不再强制单行和省略号 */
-    .cell-content-wrapper span,
-    .cell-content-wrapper a {
-        flex-grow: 1; /* 让文本或链接占据剩余空间 */
-        display: block; /* 确保占据完整宽度以便换行 */
-        min-width: 0; /* 允许在 flex 容器中收缩 */
-        word-break: break-word; /* 确保长单词也能换行 */
-    }
-
-
-    /* 复制按钮样式 */
-    .copy-btn {
-      margin-left: 0; /* 由 flex gap 控制间距 */
-      padding: 4px 8px; /* 稍微缩小按钮内边距 */
-      font-size: 0.75em; /* 减小字体大小 */
-      background: var(--bg-tertiary); /* 使用更柔和的背景色 */
-      border: 1px solid var(--border-color); /* 更细的边框 */
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: all var(--transition-fast);
-      font-weight: 500;
-      flex-shrink: 0; /* 防止按钮被挤压，它有固定的宽度 */
-      white-space: nowrap; /* 按钮文本不换行 */
-      line-height: 1; /* 调整行高使按钮更紧凑 */
-      height: 24px; /* 固定按钮高度 */
-      display: inline-flex; /* 保持 flex 行为 */
-      align-items: center; /* 垂直居中按钮内容 */
-      justify-content: center; /* 水平居中按钮内容 */
-    }
-
-    .copy-btn:hover {
-      background: var(--primary-light); /* 悬停时背景色更亮 */
-      color: white;
-      border-color: var(--primary-light);
-      transform: scale(1.05);
+    tbody tr:nth-child(odd) {
+      background-color: rgba(200, 200, 200, 0.05);
     }
 
     .loading {
       font-style: italic;
-      color: var(--text-secondary);
-      padding: 24px; /* 确保loading信息有内边距 */
+      color: #aaa;
     }
 
     .error {
-      color: var(--error-color);
+      color: #e63946;
       margin-top: 5px;
-      padding: 24px; /* 确保error信息有内边距 */
     }
 
     .stats {
-      color: var(--text-secondary);
+      color: #888;
       margin: 10px 0;
-      padding: 0 24px 16px; /* 为统计信息添加内边距 */
-      font-size: 0.95em;
     }
-
-    /* 摘要信息样式 */
-    .summary-info {
-        background: var(--bg-color);
-        border-bottom: 1px solid var(--border-light);
-        padding: 16px 24px;
-        font-size: 0.9em;
-        color: var(--text-secondary);
-        border-top-left-radius: var(--radius-lg);
-        border-top-right-radius: var(--radius-lg);
-        margin-top: 0;
-        display: flex;
-        flex-wrap: wrap; /* 允许摘要项换行 */
-        gap: 15px; /* 摘要项之间的间距 */
-        justify-content: space-around; /* 让摘要项分散对齐 */
-    }
-    .summary-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 5px 10px;
-        border-radius: var(--radius-sm);
-        background: var(--bg-secondary);
-        box-shadow: var(--shadow-sm);
-        flex: 1 1 auto; /* 允许项目增长和收缩 */
-        min-width: 120px; /* 最小宽度，防止过窄 */
-        box-sizing: border-box; /* 确保 padding 包含在宽度内 */
-    }
-    .summary-label {
-        font-weight: 600;
-        color: var(--text-primary);
-        font-size: 0.8em;
-        margin-bottom: 3px;
-    }
-    .summary-value {
-        font-weight: 700;
-        font-size: 1.2em;
-        color: var(--primary-color);
-    }
-
 
     .dofollow-text {
-      color: var(--success-color);
+      color: #2a9d8f;
       font-weight: 700;
       text-align: center;
     }
 
     .nofollow-text {
-      color: var(--warning-color);
+      color: #e76f51;
       font-weight: 700;
       text-align: center;
     }
@@ -445,157 +142,101 @@
       text-align: center;
     }
 
-    .pagination {
-      margin-top: 24px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      padding: 0 24px 24px; /* 为分页器添加内边距 */
-    }
-
     .pagination button {
-      background: white;
-      border: 2px solid var(--border-light);
-      color: var(--text-primary);
-      padding: 10px 16px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 14px;
-      transition: all var(--transition-fast);
-      min-width: 44px;
-    }
-
-    .pagination button:hover:not(:disabled) {
-      background: var(--primary-color);
+      background-color: var(--primary-color);
+      border: none;
       color: white;
-      border-color: var(--primary-color);
-      transform: translateY(-1px);
+      padding: 6px 12px;
+      margin: 0 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
     }
 
     .pagination button:disabled {
-      background: var(--bg-tertiary);
-      color: var(--text-tertiary);
+      background-color: #aaccee;
       cursor: not-allowed;
-      border-color: var(--border-light);
     }
 
-    .pagination button.active {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
+    .copy-btn {
+      margin-left: 6px;
+      padding: 2px 6px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      border: none;
     }
 
     .invalid-domain {
-      color: var(--error-color);
+      color: red;
       font-weight: bold;
     }
 
-    /* features-grid 布局调整 */
-    .features-grid {
-      display: grid;
-      grid-template-columns: 1fr; /* 默认单列布局（小屏幕）*/
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    @media (min-width: 768px) { /* 中等屏幕及以上改为双列 */
-      .features-grid {
-        grid-template-columns: 1fr 1fr; /* 默认两列等宽 */
-      }
-    }
-
-    @media (min-width: 992px) { /* 大屏幕（桌面）时，右侧卡片更宽 */
-      .features-grid {
-        /* 左侧占1份，右侧占2.5份，为右侧表格提供更多空间 */
-        grid-template-columns: 1fr 2.5fr; /* 调整比例，右侧更宽 */
-      }
-    }
-
-    .feature-card {
-      background: white;
-      border-radius: var(--radius-xl);
-      padding: 0; /* 移除卡片内边距，让内容（包括 summary-info 和 selectors）铺满 */
-      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      overflow: hidden; /* 防止卡片内容溢出 */
-      transition: all var(--transition-fast);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
-    }
-
-    .feature-header {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      padding: 24px 32px;
-      font-size: 1.4em;
-      font-weight: 600;
+    .flex-container {
       display: flex;
-      align-items: center;
-      gap: 12px;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
-    .feature-content {
-      /* feature-content 的内边距只影响其下的内容，不影响 summary-info 和 selectors */
-      padding: 0; /* 移除 feature-content 的内边距，让内部元素控制自己的间距 */
+    .flex-item {
+      flex: 1;
+      min-width: 500px;
+    }
+
+    .collapsible {
+      margin-bottom: 10px;
+    }
+
+    .collapsible button.toggle-btn {
+      width: auto;
+      margin-bottom: 10px;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #222;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 10;
     }
   </style>
   <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
 </head>
 <body>
 <div class="dark-toggle" onclick="toggleDark()">🌙 切换主题</div>
+<h1>GoGoGo出发咯</h1>
+<textarea id="urlInput" rows="5" placeholder="https://example.com/page1\nhttps://example.com/page2"></textarea>
+<button onclick="startExtraction()">开始提取</button>
 
-<div class="container">
-  <div class="header">
-    <h1>锚文本检查工具</h1>
-    <div class="subtitle">专业的网页链接分析与Word文档处理平台</div>
-  </div>
-
-  <div class="input-section">
-    <h2>🌐 批量网页链接分析</h2>
-    <textarea id="urlInput" rows="5" placeholder="请输入要分析的网页链接，每行一个：\nhttps://example.com/page1\nhttps://example.com/page2\nhttps://example.com/page3"></textarea>
-    <button class="btn-primary" onclick="startExtraction()">开始分析链接</button>
-  </div>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-header">
-        📄 Word 文档处理
-      </div>
-      <div class="feature-content">
-        <div class="collapsible">
-          <div id="docxBlock">
-            <input type="file" id="docxInput" accept=".docx" placeholder="选择Word文档" />
-            <button class="btn-primary" onclick="handleDocx()">上传并提取链接</button>
-            <div id="docxSummary" class="summary-info" style="display:none;"></div> <!-- 新增Word文档摘要 -->
-            <div id="docxResult" class="result-area"></div>
-          </div>
-        </div>
+<div class="flex-container">
+  <div class="flex-item">
+    <div class="collapsible">
+      <button class="toggle-btn" onclick="toggleSection('docxBlock')">📄 Word 锚文本提取</button>
+      <div id="docxBlock">
+        <input type="file" id="docxInput" accept=".docx" />
+        <button onclick="handleDocx()">上传并提取</button>
+        <div id="docxResult" class="result-area"></div>
       </div>
     </div>
-    
-    <div class="feature-card">
-      <div class="feature-header">
-        🔍 链接分析结果
-      </div>
-      <div class="feature-content">
-        <div class="collapsible">
-          <div id="webBlock">
-            <div class="selectors" style="display:none;">
-              <select id="sourceSelect" onchange="onSourceChange()"><option value="">所有来源页面</option></select>
-              <select id="domainSelect" onchange="onDomainChange()" disabled><option value="">所有目标域名</option></select>
-            </div>
-            <div id="webSummary" class="summary-info" style="display:none;"></div> <!-- 新增Web链接摘要 -->
-            <div id="stats" class="stats"></div> <!-- 仍保留用于显示当前页面的统计 -->
-            <div id="resultArea" class="result-area"></div>
-            <div id="pagination" class="pagination"></div>
-          </div>
+  </div>
+  <div class="flex-item">
+    <div class="collapsible">
+      <button class="toggle-btn" onclick="toggleSection('webBlock')">🌐 网页抓取锚文本</button>
+      <div id="webBlock">
+        <div class="selectors" style="display:none;">
+          <select id="sourceSelect" onchange="onSourceChange()"><option value="">选择来源页面</option></select>
+          <select id="domainSelect" onchange="onDomainChange()" disabled><option value="">选择目标域名</option></select>
         </div>
+        <div id="stats" class="stats"></div>
+        <div id="resultArea" class="result-area"></div>
+        <div id="pagination" class="pagination"></div>
       </div>
     </div>
   </div>
@@ -610,17 +251,12 @@
 
   function toggleSection(id) {
     const el = document.getElementById(id);
-    if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
   }
 
   function getDomainFromURL(url) {
-    try { 
-        const urlObj = new URL(url);
-        return urlObj.hostname.replace(/^www\./, ''); 
-    }
-    catch { 
-        return '无效域名或未知来源';
-    }
+    try { return new URL(url).hostname.replace(/^www\./, ''); }
+    catch { return ''; }
   }
 
   async function fetchWithFallback(url) {
@@ -635,12 +271,49 @@
     throw new Error('所有代理失败');
   }
 
+  function extractPublishDate(doc) {
+    // 尝试从 meta 标签获取
+    const metaSelectors = [
+        'meta[property="article:published_time"]',
+        'meta[property="og:published_time"]',
+        'meta[name="publication_date"]',
+        'meta[name="publishdate"]',
+        'meta[name="date"]',
+        'meta[name="Date"]',
+        'meta[name="DC.date.issued"]'
+    ];
+    for (const selector of metaSelectors) {
+        const el = doc.querySelector(selector);
+        if (el && el.content) return el.content.split('T')[0];
+    }
+
+    // 尝试从 time 标签获取
+    const timeEl = doc.querySelector('time[datetime]');
+    if (timeEl && timeEl.getAttribute('datetime')) {
+        return timeEl.getAttribute('datetime').split('T')[0];
+    }
+    
+    // 尝试从 JSON-LD 获取
+    try {
+        const jsonLd = doc.querySelector('script[type="application/ld+json"]');
+        if (jsonLd) {
+            const data = JSON.parse(jsonLd.textContent);
+            const date = data.datePublished || data.uploadDate;
+            if (date) return date.split('T')[0];
+        }
+    } catch(e) { /* JSON 解析可能失败，忽略错误 */ }
+
+    return '未找到';
+  }
+
 async function fetchAndExtract(url) {
   const html = await fetchWithFallback(url);
   const doc = new DOMParser().parseFromString(html, 'text/html');
+  const publishDate = extractPublishDate(doc);
 
   const results = [];
 
+  // 尝试策略1：从常见内容区域提取
   const selectors = ['main', 'article', '#content', '.post-content'];
   let container = selectors.map(s => doc.querySelector(s)).find(c => c);
 
@@ -649,6 +322,7 @@ async function fetchAndExtract(url) {
     anchors = container.querySelectorAll('a[href]');
   }
 
+  // 策略2 fallback：若未提取到任何链接，则从 body 全量扫描
   if (!anchors || anchors.length === 0) {
     container = doc.body;
     anchors = container.querySelectorAll('a[href]');
@@ -670,24 +344,18 @@ async function fetchAndExtract(url) {
     const rel = a.getAttribute('rel') || '';
     const followType = rel.toLowerCase().includes('nofollow') ? 'nofollow' : 'dofollow';
 
-    if (targetDomain && href) { 
+    if (targetDomain) {
       results.push({ text, href, targetDomain, followType });
     }
   });
 
-  return results;
+  return { anchors: results, publishDate: publishDate };
 }
 
 
   async function startExtraction() {
-    const input = document.getElementById('urlInput');
-    const resultArea = document.getElementById('resultArea');
-    const webSummary = document.getElementById('webSummary');
-    const selectorsDiv = document.querySelector('.selectors');
-    const pagination = document.getElementById('pagination');
-    const stats = document.getElementById('stats');
-
-    const rawUrls = input ? input.value.trim().split('\n').map(u => u.trim()).filter(Boolean) : [];
+    const input = document.getElementById('urlInput').value.trim();
+    const rawUrls = input.split('\n').map(u => u.trim()).filter(Boolean);
     const urls = [], seen = new Set();
     rawUrls.forEach(u => {
       try {
@@ -699,237 +367,160 @@ async function fetchAndExtract(url) {
       } catch {}
     });
     inputOrder = [...urls];
+    if (!urls.length) return alert('请输入至少一个有效网址');
 
-    if (!urls.length) {
-        if (resultArea) resultArea.innerHTML = '<p class="error">请输入至少一个有效网址。</p>';
-        if (webSummary) webSummary.style.display = 'none';
-        if (selectorsDiv) selectorsDiv.style.display = 'none';
-        if (stats) stats.textContent = '';
-        if (pagination) pagination.innerHTML = '';
-        return;
-    }
+    allData = {}; filteredSource = filteredDomain = ''; currentPage = 1;
+    document.getElementById('resultArea').innerHTML = '<p class="loading">抓取中，请稍候...</p>';
+    document.querySelector('.selectors').style.display = 'none';
+    document.getElementById('pagination').innerHTML = '';
+    document.getElementById('stats').textContent = '';
 
-    if (resultArea) resultArea.innerHTML = '<p class="loading">抓取中，请稍候...</p>';
-    if (webSummary) webSummary.style.display = 'none';
-    if (selectorsDiv) selectorsDiv.style.display = 'none';
-    if (pagination) pagination.innerHTML = '';
-    if (stats) stats.textContent = '';
-
-    let allExtractedAnchors = [];
     for (const url of urls) {
       try {
-        const anchors = await fetchAndExtract(url);
-        allData[url] = anchors;
-        allExtractedAnchors = allExtractedAnchors.concat(anchors);
+        const { anchors, publishDate } = await fetchAndExtract(url);
+        allData[url] = { anchors, publishDate };
       } catch (e) {
         const errP = document.createElement('p');
         errP.className = 'error';
         errP.textContent = `抓取失败：${url}（${e.message}）`;
-        if (resultArea) resultArea.appendChild(errP);
+        document.getElementById('resultArea').appendChild(errP);
       }
     }
 
     const orderedDomainSet = new Set();
     urls.forEach(u => {
-      (allData[u] || []).forEach(a => {
+      (allData[u]?.anchors || []).forEach(a => {
         orderedDomainSet.add(a.targetDomain);
       });
     });
 
+    const actualDomains = new Set();
+    Object.values(allData).forEach(data => {
+        data.anchors.flat().forEach(a => actualDomains.add(a.targetDomain))
+    });
+
     const sourceSelect = document.getElementById('sourceSelect');
-    if (sourceSelect) {
-        sourceSelect.innerHTML = `<option value="">所有来源页面</option>${urls.map(u => `<option value="${u}">${u}</option>`).join('')}`;
-    }
+    sourceSelect.innerHTML = `<option value="">选择来源页面</option>${urls.map(u => `<option value="${u}">${u}</option>`).join('')}`;
 
     const domainSelect = document.getElementById('domainSelect');
-    if (domainSelect) {
-        domainSelect.innerHTML = `<option value="">所有目标域名</option>`;
-        orderedDomainSet.forEach(domain => {
-            const isValid = domain !== '无效域名或未知来源';
-            const classStr = isValid ? '' : 'class="invalid"';
-            domainSelect.innerHTML += `<option ${classStr} value="${domain}">${domain}</option>`;
-        });
-        domainSelect.disabled = false;
-    }
+    domainSelect.innerHTML = `<option value="">选择目标域名</option>`;
+    orderedDomainSet.forEach(domain => {
+      const isValid = inputOrder.some(src => getDomainFromURL(src) === domain);
+      const classStr = isValid ? '' : 'class="invalid"';
+      domainSelect.innerHTML += `<option ${classStr} value="${domain}">${domain}</option>`;
+    });
+    domainSelect.disabled = false;
 
-    // 更新Web链接分析的总览摘要
-    if (webSummary) {
-        const totalWebLinks = allExtractedAnchors.length;
-        const uniqueWebDomains = new Set(allExtractedAnchors.map(a => a.targetDomain)).size;
-        const dofollowWebCount = allExtractedAnchors.filter(a => a.followType === 'dofollow').length;
-        const nofollowWebCount = allExtractedAnchors.filter(a => a.followType === 'nofollow').length;
-
-        webSummary.innerHTML = `
-            <div class="summary-item"><span class="summary-label">总链接数</span><span class="summary-value">${totalWebLinks}</span></div>
-            <div class="summary-item"><span class="summary-label">唯一域名数</span><span class="summary-value">${uniqueWebDomains}</span></div>
-            <div class="summary-item"><span class="summary-label">Dofollow</span><span class="summary-value">${dofollowWebCount}</span></div>
-            <div class="summary-item"><span class="summary-label">Nofollow</span><span class="summary-value">${nofollowWebCount}</span></div>
-        `;
-        webSummary.style.display = 'flex';
-    }
-
-    if (selectorsDiv) selectorsDiv.style.display = 'flex';
+    document.querySelector('.selectors').style.display = 'flex';
     displayResults();
   }
 
   function onSourceChange() {
-    filteredSource = document.getElementById('sourceSelect') ? document.getElementById('sourceSelect').value : '';
+    filteredSource = document.getElementById('sourceSelect').value;
     filteredDomain = '';
-    const domainSelect = document.getElementById('domainSelect');
-    if (domainSelect) domainSelect.value = '';
+    document.getElementById('domainSelect').value = '';
     currentPage = 1;
     displayResults();
   }
 
   function onDomainChange() {
-    filteredDomain = document.getElementById('domainSelect') ? document.getElementById('domainSelect').value : '';
+    filteredDomain = document.getElementById('domainSelect').value;
     currentPage = 1;
     displayResults();
   }
 
   function copyToClipboard(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.left = '-9999px';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-        document.execCommand('copy');
-    } catch (err) {
-        console.error('复制失败:', err);
-        const messageDiv = document.createElement('div');
-        messageDiv.textContent = '无法自动复制，请手动复制文本。已将其放置在一个临时区域，方便您复制。';
-        messageDiv.style.cssText = `
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.8); color: white; padding: 15px 20px; border-radius: 8px;
-            z-index: 10000; font-size: 14px; text-align: center;
-        `;
-        document.body.appendChild(messageDiv);
-        setTimeout(() => {
-            if (messageDiv && messageDiv.parentNode) {
-                document.body.removeChild(messageDiv);
-            }
-        }, 3000);
-    } finally {
-        if (textarea && textarea.parentNode) {
-            document.body.removeChild(textarea);
-        }
-    }
+    navigator.clipboard.writeText(text).catch(() => alert("复制失败"));
   }
 
   function displayResults() {
     const resultArea = document.getElementById('resultArea');
-    const statsDiv = document.getElementById('stats');
-    const paginationDiv = document.getElementById('pagination');
-
-    if (resultArea) resultArea.innerHTML = '';
+    resultArea.innerHTML = '';
     let rows = [];
 
     const sources = filteredSource ? [filteredSource] : Object.keys(allData);
     sources.forEach(source => {
-      (allData[source] || []).forEach(a => {
-        if (!filteredDomain || a.targetDomain === filteredDomain)
-          rows.push({ source, ...a });
-      });
+      const sourceData = allData[source];
+      if (sourceData && sourceData.anchors) {
+          sourceData.anchors.forEach(a => {
+            if (!filteredDomain || a.targetDomain === filteredDomain) {
+              rows.push({ source, publishDate: sourceData.publishDate, ...a });
+            }
+          });
+      }
     });
 
     if (!rows.length) {
-      if (resultArea) resultArea.innerHTML = '<p style="padding: 24px;">无匹配的锚文本。</p>';
-      if (statsDiv) statsDiv.textContent = '';
-      if (paginationDiv) paginationDiv.innerHTML = '';
+      resultArea.innerHTML = '<p>无匹配的锚文本。</p>';
+      document.getElementById('stats').textContent = '';
+      document.getElementById('pagination').innerHTML = '';
       return;
     }
 
     currentRows = rows;
-    
-    if (statsDiv) statsDiv.textContent = `当前显示锚文本总数：${rows.length}`;
+    document.getElementById('stats').textContent = `显示锚文本总数：${rows.length}`;
     showPage(currentPage);
   }
 
   function showPage(page) {
-    const resultArea = document.getElementById('resultArea');
-    const pagination = document.getElementById('pagination');
-    
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
     const rows = currentRows.slice(start, end);
 
     const table = document.createElement('table');
-    table.innerHTML = `<thead><tr><th>来源页面</th><th>锚文本</th><th>目标链接</th><th>目标域名</th><th>链接类型</th></tr></thead>`;
+    table.innerHTML = `<thead><tr><th>来源页面</th><th>文章上线时间</th><th>锚文本</th><th>目标链接</th><th>目标域名</th><th>链接类型</th></tr></thead>`;
     const tbody = document.createElement('tbody');
 
     rows.forEach(row => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>
-          <div class="cell-content-wrapper">
-            <span>${row.source}</span>
-          </div>
-        </td>
-        <td>
-          <div class="cell-content-wrapper">
-            <span>${row.text}</span>
-            <button class="copy-btn" onclick="copyToClipboard('${row.text.replace(/'/g, "\\'")}')">复制</button>
-          </div>
-        </td>
-        <td>
-          <div class="cell-content-wrapper">
-            <a href="${row.href}" target="_blank">${row.href}</a>
-            <button class="copy-btn" onclick="copyToClipboard('${row.href.replace(/'/g, "\\'")}')">复制</button>
-          </div>
-        </td>
-        <td><span>${row.targetDomain}</span></td>
+        <td>${row.source}</td>
+        <td>${row.publishDate}</td>
+        <td>${row.text}<button class="copy-btn" onclick="copyToClipboard('${row.text.replace(/'/g, "\\'")}')">复制</button></td>
+        <td><a href="${row.href}" target="_blank">${row.href}</a><button class="copy-btn" onclick="copyToClipboard('${row.href.replace(/'/g, "\\'")}')">复制</button></td>
+        <td>${row.targetDomain}</td>
         <td class="${row.followType === 'nofollow' ? 'nofollow-text' : 'dofollow-text'}">${row.followType}</td>
       `;
       tbody.appendChild(tr);
     });
 
     table.appendChild(tbody);
-    if (resultArea) {
-      resultArea.innerHTML = '';
-      resultArea.appendChild(table);
+    const resultArea = document.getElementById('resultArea');
+    resultArea.innerHTML = '';
+    resultArea.appendChild(table);
+
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+    const totalPages = Math.ceil(currentRows.length / pageSize);
+    if (totalPages <= 1) return;
+
+    const prev = document.createElement('button');
+    prev.textContent = '上一页';
+    prev.disabled = page === 1;
+    prev.onclick = () => { currentPage--; showPage(currentPage); };
+    pagination.appendChild(prev);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.disabled = i === page;
+      btn.onclick = () => { currentPage = i; showPage(i); };
+      pagination.appendChild(btn);
     }
 
-    if (pagination) {
-        pagination.innerHTML = '';
-        const totalPages = Math.ceil(currentRows.length / pageSize);
-        if (totalPages <= 1) return;
-
-        const prev = document.createElement('button');
-        prev.textContent = '上一页';
-        prev.disabled = page === 1;
-        prev.onclick = () => { currentPage--; showPage(currentPage); };
-        pagination.appendChild(prev);
-
-        for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement('button');
-            btn.textContent = i;
-            btn.disabled = i === page;
-            btn.onclick = () => { currentPage = i; showPage(i); };
-            pagination.appendChild(btn);
-        }
-
-        const next = document.createElement('button');
-        next.textContent = '下一页';
-        next.disabled = page === totalPages;
-        next.onclick = () => { currentPage++; showPage(currentPage); };
-        pagination.appendChild(next);
-    }
+    const next = document.createElement('button');
+    next.textContent = '下一页';
+    next.disabled = page === totalPages;
+    next.onclick = () => { currentPage++; showPage(currentPage); };
+    pagination.appendChild(next);
   }
 
   function handleDocx() {
     const input = document.getElementById('docxInput');
     const resultDiv = document.getElementById('docxResult');
-    const summaryDiv = document.getElementById('docxSummary');
+    resultDiv.innerHTML = '<p class="loading">正在解析 Word 文档...</p>';
 
-    if (resultDiv) resultDiv.innerHTML = '<p class="loading">正在解析 Word 文档...</p>';
-    if (summaryDiv) summaryDiv.style.display = 'none';
-
-    if (!input || !input.files.length) {
-        if (resultDiv) resultDiv.innerHTML = '<p class="error">请先选择 Word 文件。</p>';
-        return;
-    }
+    if (!input.files.length) return alert('请先选择 Word 文件');
 
     const reader = new FileReader();
     reader.onload = function(event) {
@@ -938,70 +529,25 @@ async function fetchAndExtract(url) {
         const doc = new DOMParser().parseFromString(html, 'text/html');
         const links = doc.querySelectorAll('a[href]');
         if (!links.length) {
-          if (resultDiv) resultDiv.innerHTML = '<p style="padding: 24px;">未提取到任何链接。</p>';
-          if (summaryDiv) summaryDiv.style.display = 'none';
+          resultDiv.innerHTML = '<p>未提取到任何链接。</p>';
           return;
         }
 
         let table = `<table><thead><tr><th>锚文本</th><th>链接地址</th></tr></thead><tbody>`;
-        const extractedLinks = [];
-        let dofollowCount = 0;
-        let nofollowCount = 0;
-
         links.forEach(a => {
           const text = a.textContent.trim();
-          const href = a.getAttribute('href')?.trim();
-          const rel = a.getAttribute('rel') || '';
-
+          const href = a.getAttribute('href').trim();
           if (text && href) {
-            extractedLinks.push({text, href, rel});
-
-            if (rel.toLowerCase().includes('nofollow')) {
-                nofollowCount++;
-            } else {
-                dofollowCount++;
-            }
-
-            const textHtml = `<span>${text}</span>`;
-            const hrefHtml = `<a href="${href}" target="_blank">${href}</a>`;
-
-            table += `<tr>
-              <td>
-                <div class="cell-content-wrapper">
-                  ${textHtml}
-                </div>
-              </td>
-              <td>
-                <div class="cell-content-wrapper">
-                  ${hrefHtml}
-                </div>
-              </td>
-            </tr>`;
+            table += `<tr><td>${text}</td><td><a href="${href}" target="_blank">${href}</a></td></tr>`;
           }
         });
         table += '</tbody></table>';
-        if (resultDiv) resultDiv.innerHTML = table;
-
-        // 计算并显示Word文档摘要
-        const uniqueDomains = new Set(extractedLinks.map(link => getDomainFromURL(link.href)));
-        if (summaryDiv) {
-            summaryDiv.innerHTML = `
-                <div class="summary-item"><span class="summary-label">总链接数</span><span class="summary-value">${extractedLinks.length}</span></div>
-                <div class="summary-item"><span class="summary-label">唯一域名数</span><span class="summary-value">${uniqueDomains.size}</span></div>
-                <div class="summary-item"><span class="summary-label">Dofollow</span><span class="summary-value">${dofollowCount}</span></div>
-                <div class="summary-item"><span class="summary-label">Nofollow</span><span class="summary-value">${nofollowCount}</span></div>
-            `;
-            summaryDiv.style.display = 'flex';
-        }
-
+        resultDiv.innerHTML = table;
       }).catch(err => {
-        if (resultDiv) resultDiv.innerHTML = `<p class="error">解析失败：${err.message}</p>`;
-        if (summaryDiv) summaryDiv.style.display = 'none';
+        resultDiv.innerHTML = `<p class="error">解析失败：${err.message}</p>`;
       });
     };
-    if (input.files[0]) {
-        reader.readAsArrayBuffer(input.files[0]);
-    }
+    reader.readAsArrayBuffer(input.files[0]);
   }
 </script>
 </body>
