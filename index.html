@@ -99,14 +99,12 @@
       word-break: break-all; /* 修改：允许在任意字符间换行，对URL友好 */
     }
     
-    /* === 新增样式：用于控制列宽 === */
     .col-source { width: 26%; }
     .col-date { width: 12%; }
     .col-anchor { width: 18%; }
     .col-target-link { width: 26%; }
     .col-domain { width: 10%; }
     .col-type { width: 8%; text-align: center; }
-    /* === 结束新增 === */
 
     th {
       background-color: var(--table-header-bg);
@@ -269,17 +267,25 @@
     catch { return ''; }
   }
 
+  // === 修改部分：更新了代理列表 ===
   async function fetchWithFallback(url) {
-    const proxies = [u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`, u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`];
+    const proxies = [
+      u => `https://corsproxy.io/?${encodeURIComponent(u)}`, // 新增的代理
+      u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`
+    ];
     for (let proxy of proxies) {
       try {
         const res = await fetch(proxy(url));
         if (!res.ok) throw new Error(`状态 ${res.status}`);
         return await res.text();
-      } catch {}
+      } catch (e) {
+        console.warn(`代理 ${proxy(url)} 失败:`, e);
+      }
     }
     throw new Error('所有代理失败');
   }
+  // === 结束修改 ===
 
   function extractPublishDate(doc) {
     const metaSelectors = [
@@ -472,7 +478,6 @@ async function fetchAndExtract(url) {
     const rows = currentRows.slice(start, end);
 
     const table = document.createElement('table');
-    // 修改：为每个表头（th）添加class，用于CSS控制
     table.innerHTML = `
       <thead>
         <tr>
@@ -488,7 +493,6 @@ async function fetchAndExtract(url) {
 
     rows.forEach(row => {
       const tr = document.createElement('tr');
-      // 修改：为每个单元格（td）添加class，与表头对应
       tr.innerHTML = `
         <td class="col-source">${row.source}</td>
         <td class="col-date">${row.publishDate}</td>
